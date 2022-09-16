@@ -8,32 +8,48 @@
   </head>
   <body>
     <div id="app">
+      <header id="todo-title">To-Do List</header>
       <!-- TODO: Buatlah sebuah header dengan id todo-title -->
+	  <subtitle id="todo-subtitle">~ Today I need to ~</subtitle>
       <!-- TODO: Buatlah sebuah subtitle dengan id todo-subtitle -->
 
       <!-- Section: input -->
+	  <input id="todo-input">
       <!-- TODO: Buatlah sebuah input bertipe text dengan id todo-input -->
+      <button id="todo-submit">Submit</button>
       <!-- TODO: Buatlah sebuah button dengan id todo-submit -->
 
       <!-- Section output -->
       <!-- TODO: Buatlah sebuah <ul> dengan id todo-output -->
+	  <ul id="todo-output">
+	  </ul>
     </div>
 
     <!-- ! Untuk tantangan ini, script jangan diubah ke external js yah ! -->
     <script>
       // TODO: Deklarasi variable sesuai dengan kebutuhan di sini
-      let button;
-      let input;
-      let output;
+      let button = document.getElementById("todo-submit");
+      let input = document.getElementById("todo-input");
+      let output = document.getElementById("todo-output");
+
 
       // TODO: Buatlah sebuah fungsi dengan nama fnClickHandler
       // Fungsi yang digunakan untuk menambahkan tulisan
       // Jangan ubah cara deklarasi fungsinya, cukup isi saja
-      function fnClickHandler(toDoItem) {}
-
+      function fnClickHandler(toDoItem) {
+		let li = document.createElement("li");
+		li.appendChild(document.createTextNode(input.value));
+	    output.appendChild(li)
+		document.getElementById("todo-input").value = ""
+	  }
+	  button.addEventListener("click", fnClickHandler);
       // TODO: register event onclick / addEventListener untuk button
       // akan menjalankan fungsi fnClickHandler
-      
+      input.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+      fnClickHandler('a')
+    }
+});
       // TODO: register event onkeypress / addEventListener untuk input
       // sehingga saat di input ditekan enter akan menjalankan fungsi fnClickHandler juga
     </script>
